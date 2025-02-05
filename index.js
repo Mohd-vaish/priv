@@ -1,26 +1,26 @@
 const fs = require("fs");
 const { execSync } = require("child_process");
 
-let startDate = new Date("2024-01-01"); // starting date
+let startDate = new Date("2025-02-02");
 
-for (let i = 0; i < 200; i++) {
+for (let i = 0; i < 120; i++) {
 
   const random = Math.floor(Math.random() * 100000);
 
   fs.appendFileSync("README.md", "\ncommit " + random);
 
-  const date = new Date(startDate);
-  date.setDate(startDate.getDate() + i); // next day
+  // random gap 1–4 days
+  startDate.setDate(startDate.getDate() + Math.floor(Math.random() * 4) + 1);
 
   const env = {
     ...process.env,
-    GIT_AUTHOR_DATE: date.toISOString(),
-    GIT_COMMITTER_DATE: date.toISOString(),
+    GIT_AUTHOR_DATE: startDate.toISOString(),
+    GIT_COMMITTER_DATE: startDate.toISOString(),
   };
 
   execSync("git add .");
-  execSync(`git commit -m "backdated commit ${random}"`, { env });
+  execSync(`git commit -m "commit ${random}"`, { env });
   execSync("git push");
 
-  console.log("Commit pushed for:", date.toDateString());
+  console.log("Commit pushed for:", startDate.toDateString());
 }
