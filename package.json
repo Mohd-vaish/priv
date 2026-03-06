@@ -1,0 +1,22 @@
+{
+  "name": "version",
+  "version": "1.0.0",
+  "description": "become a cool student?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohd-vaish/priv.git"
+  },
+  "author": "mohd vaish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohd-vaish/priv/issues"
+  },
+  "homepage": "https://github.com/Mohd-vaish/priv#readme",
+  "dependencies": {
+    "jsonfile": "^6.2.0"
+  }
+}
